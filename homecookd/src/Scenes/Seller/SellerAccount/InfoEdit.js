@@ -3,8 +3,6 @@ import TextField from 'material-ui/TextField';
 import "./SellerProfileEdit.css"
 import {UpdateSellerInfo} from "../../../Utils/Sellers"
 import {getSellerInfo} from "../../../Utils/Sellers"
-import MenuIcons from '../SellerAccount/SideMenu';
-
 
 import { Table } from 'semantic-ui-react'
 import { Button } from 'semantic-ui-react'
@@ -14,13 +12,9 @@ class ProfileEdit extends Component {
     super(props)
     this.state = {
       name: '',
-      restaurant:'',
-      email: '',
-      address:'',
-      city:'',
-      state:'',
-      zip:'',
-      time:''
+      business_name:'',
+      newPassword:'',
+      location:''
 
     };
     this.handleFormChange = this.handleFormChange.bind(this);
@@ -35,16 +29,13 @@ class ProfileEdit extends Component {
 
   HandleFormSubmission(e){
     const name = this.state.name;
-    const restaurant = this.state.restaurant;
-    const email = this.state.email;
-    const address = this.state.address;
-    const city = this.state.city;
-    const state = this.state.state;
-    const zip = this.state.zip;
+    const business_name = this.state.business_name;
+    const newPassword = this.state.newPassword;
+    const city = this.state.location;
     // const Time = this.state.Time;
 
     const requestBody = {
-      name, restaurant, email, address, city, state, zip
+      name, business_name, city
     }
 
     UpdateSellerInfo(localStorage.getItem('api_token'),requestBody)
@@ -68,42 +59,26 @@ class ProfileEdit extends Component {
     <div style={{padding: 150}}>
 <center><h2>Edit Account Page</h2></center>
 
-<MenuIcons/>
-
 
   <Table>
     <Table.Body>
       <Table.Row>
         <Table.Cell>Name:</Table.Cell>
-        <Table.Cell><TextField name="Name" value = {this.state.Name}autoFocus
+        <Table.Cell><TextField name="Name" value = {this.state.name}autoFocus
           onChange={this.handleFormChange}
         /></Table.Cell>
       </Table.Row>
 
       <Table.Row>
         <Table.Cell>Restaurant Name:</Table.Cell>
-        <Table.Cell><TextField name="Restaurant" value = {this.state.Restaurant} autoFocus
+        <Table.Cell><TextField name="Restaurant" value = {this.state.business_name} autoFocus
           onChange={this.handleFormChange}
         /></Table.Cell>
       </Table.Row>
 
       <Table.Row>
-        <Table.Cell>Time:</Table.Cell>
-        <Table.Cell><TextField name="Time" value = {this.state.Time} autoFocus
-          onChange={this.handleFormChange}
-        /></Table.Cell>
-      </Table.Row>
-
-      <Table.Row>
-        <Table.Cell>Email:</Table.Cell>
-        <Table.Cell><TextField name="Email" value = {this.state.Email} autoFocus
-          onChange={this.handleFormChange}
-        /></Table.Cell>
-      </Table.Row>
-
-      <Table.Row>
-        <Table.Cell>Address:</Table.Cell>
-        <Table.Cell><TextField name="Address" value = {this.state.Address} autoFocus
+        <Table.Cell>Password:</Table.Cell>
+        <Table.Cell><TextField name="Password" value = {this.state.newPassword} autoFocus
           onChange={this.handleFormChange}
         /></Table.Cell>
       </Table.Row>
@@ -111,20 +86,6 @@ class ProfileEdit extends Component {
       <Table.Row>
         <Table.Cell>City:</Table.Cell>
         <Table.Cell><TextField name="City" value = {this.state.City} autoFocus
-          onChange={this.handleFormChange}
-        /></Table.Cell>
-      </Table.Row>
-
-      <Table.Row>
-        <Table.Cell>State:</Table.Cell>
-        <Table.Cell><TextField name="State" value = {this.state.State} autoFocus
-          onChange={this.handleFormChange}
-        /></Table.Cell>
-      </Table.Row>
-
-      <Table.Row>
-        <Table.Cell>Zip:</Table.Cell>
-        <Table.Cell><TextField name="Zip" value = {this.state.Zip} autoFocus
           onChange={this.handleFormChange}
         /></Table.Cell>
       </Table.Row>
