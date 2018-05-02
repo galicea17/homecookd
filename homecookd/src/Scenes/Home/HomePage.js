@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
-import HomeJoinButtons from './HomeJoinButtons';
-// import Steps from '../StepByStep/StepByStep'
+import HomeBg from './Parallax'
+// import HomeJoinButtons from './HomeJoinButtons';
+// import HomeSearchBar from './HomeSearchBar'
 
 
 class HomePage extends Component{
   render(){
     return(
       <div>
-          <h1>Homecookd</h1>
-
-          <HomeJoinButtons/>
-
-
+          <HomeBg/>
       </div>
     )
   }

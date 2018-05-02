@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 var FoodItem = require("../Models/foodItemSchema");
 var Seller = require("../Models/sellerSchema");
 
@@ -17,8 +18,8 @@ exports.foodItemCreate = (req, res) => {
             tempFoodItem.name = req.body.name;
             // take care of images later / store it in amazon get link and store it here
             // middle man to get wherae to send
-            tempFoodItem.ingredients = req.body.ingredients.slice();// check this with team
-            tempFoodItem.allergens = req.body.allergens.slice();
+            tempFoodItem.ingredients = req.body.ingredients;
+            tempFoodItem.allergens = req.body.allergens;
             tempFoodItem.seller_id = docs[0]._id;
             tempFoodItem.description = req.body.description;
             tempFoodItem.price = req.body.price;
@@ -34,9 +35,9 @@ exports.foodItemCreate = (req, res) => {
             });
         }
     });
-}
+};
 
-function sellerUpdateFoodItemId(seller_id, tempFoodItem_id , res)
+function sellerUpdateFoodItemId(seller_id, tempFoodItem_id , res, req)
 {
     Seller.update({ _id: seller_id }, { $push: { food_items_id: tempFoodItem_id } },
         function (err, numAffected, rawResponse) {
@@ -51,6 +52,3 @@ function sellerUpdateFoodItemId(seller_id, tempFoodItem_id , res)
         }
     );
 }
-
-
-
